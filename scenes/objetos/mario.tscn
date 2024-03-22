@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://clso268texs7v"]
+
+[ext_resource type="Texture2D" uid="uid://dgmywnqls8phh" path="res://assets/graphics/mario/small.png" id="1_hla8f"]
+[ext_resource type="Script" path="res://scripts/mario.gd" id="1_qtc7s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr5h7"]
+atlas = ExtResource("1_hla8f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5scm6"]
+atlas = ExtResource("1_hla8f")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt1bb"]
+atlas = ExtResource("1_hla8f")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvxwh"]
+atlas = ExtResource("1_hla8f")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bxxj"]
+atlas = ExtResource("1_hla8f")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oi0ji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr5h7")
+}],
+"loop": true,
+"name": &"idle_small",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5scm6")
+}],
+"loop": true,
+"name": &"jump_small",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt1bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvxwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bxxj")
+}],
+"loop": true,
+"name": &"run_small",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rekt8"]
+size = Vector2(12, 17)
+
+[node name="Mario" type="CharacterBody2D"]
+script = ExtResource("1_qtc7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oi0ji")
+animation = &"run_small"
+autoplay = "idle_small"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rekt8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_bottom = 240
