@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clso268texs7v"]
+[gd_scene load_steps=11 format=3 uid="uid://clso268texs7v"]
 
 [ext_resource type="Texture2D" uid="uid://dgmywnqls8phh" path="res://assets/graphics/mario/small.png" id="1_hla8f"]
 [ext_resource type="Script" path="res://scripts/mario.gd" id="1_qtc7s"]
@@ -10,6 +10,10 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5scm6"]
 atlas = ExtResource("1_hla8f")
 region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgc8x"]
+atlas = ExtResource("1_hla8f")
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xt1bb"]
 atlas = ExtResource("1_hla8f")
@@ -43,6 +47,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qgc8x")
+}],
+"loop": true,
+"name": &"morir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xt1bb")
 }, {
 "duration": 1.0,
@@ -66,6 +78,8 @@ script = ExtResource("1_qtc7s")
 sprite_frames = SubResource("SpriteFrames_oi0ji")
 animation = &"run_small"
 autoplay = "idle_small"
+frame = 1
+frame_progress = 0.727583
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rekt8")

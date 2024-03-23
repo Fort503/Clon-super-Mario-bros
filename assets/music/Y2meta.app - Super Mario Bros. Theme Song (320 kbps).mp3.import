@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://jwhy1tjdame4"
+path="res://.godot/imported/Y2meta.app - Super Mario Bros. Theme Song (320 kbps).mp3-9fa8503c7f9627d3250b72eb20043ca2.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Y2meta.app - Super Mario Bros. Theme Song (320 kbps).mp3"
+dest_files=["res://.godot/imported/Y2meta.app - Super Mario Bros. Theme Song (320 kbps).mp3-9fa8503c7f9627d3250b72eb20043ca2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

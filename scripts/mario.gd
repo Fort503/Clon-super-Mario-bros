@@ -1,10 +1,10 @@
 extends CharacterBody2D
-const speed = 150
-const  gravedad = 50
-const salto = -500
+const speed = 120
+const  gravedad = 40
+const salto = -650
 @onready var animated_sprite_2d = $AnimatedSprite2D
 var direction = 0
-var esGrande = 0;
+var esGrande = 0
 
 func  _ready():
 	pass	
