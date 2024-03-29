@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpijbukh2fjoa"]
+
+[ext_resource type="Script" path="res://scripts/bloque.gd" id="1_jfxgk"]
+[ext_resource type="Texture2D" uid="uid://bdrwaw4vs6peu" path="res://assets/graphics/prize_spritesheet.png" id="1_lbrcs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv3nn"]
+atlas = ExtResource("1_lbrcs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21e21"]
+atlas = ExtResource("1_lbrcs")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad272"]
+atlas = ExtResource("1_lbrcs")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcd7j"]
+atlas = ExtResource("1_lbrcs")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uc7fy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv3nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21e21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad272")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcd7j")
+}],
+"loop": true,
+"name": &"vacio",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myurc"]
+size = Vector2(16, 16.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g7l"]
+size = Vector2(16, 3)
+
+[node name="bloque" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_jfxgk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uc7fy")
+autoplay = "default"
+offset = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_myurc")
+
+[node name="Area2DBloque" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 10
+
+[node name="colitionShapeBloque" type="CollisionShape2D" parent="Area2DBloque"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_e1g7l")
+
+[connection signal="area_entered" from="Area2DBloque" to="." method="_on_area_2d_bloque_area_entered"]

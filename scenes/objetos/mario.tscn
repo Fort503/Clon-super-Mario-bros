@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://clso268texs7v"]
+[gd_scene load_steps=13 format=3 uid="uid://clso268texs7v"]
 
 [ext_resource type="Texture2D" uid="uid://dgmywnqls8phh" path="res://assets/graphics/mario/small.png" id="1_hla8f"]
 [ext_resource type="Script" path="res://scripts/mario.gd" id="1_qtc7s"]
+[ext_resource type="AudioStream" uid="uid://ddii012rab0pb" path="res://assets/music/Y2meta.app - Salto de mario bros - efecto de sonido (320 kbps).mp3" id="3_2ep3y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nr5h7"]
 atlas = ExtResource("1_hla8f")
@@ -71,7 +72,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rekt8"]
 size = Vector2(12, 17)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifdw2"]
+size = Vector2(13, 18)
+
 [node name="Mario" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_qtc7s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -88,3 +94,15 @@ shape = SubResource("RectangleShape2D_rekt8")
 limit_left = 0
 limit_top = 0
 limit_bottom = 240
+
+[node name="sonidoSalto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2ep3y")
+volume_db = 5.0
+
+[node name="Area2DMario" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 12
+
+[node name="MarioColition" type="CollisionShape2D" parent="Area2DMario"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ifdw2")
